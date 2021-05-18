@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{main_layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LWH - Home</title>
+</head>
+<body>
+
+<main layout:fragment="main-content">
+
+    <section class="text-center">
+        <div class="row py-lg-1">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">WoW Free to Play Twinking</h1>
+                <p class="lead text-muted">Lucky WoW Hat - knowledge base that making it easier for you when twinking</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="left-card shadow-sm">
+                    <a th:href="@{/gear?filterType=Cloth}">
+                        <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" focusable="false" height="225" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect fill="#55595c" height="100%" width="100%"/><text dy=".3em" fill="#eceeef" x="50%" y="50%">Shadowlands Gear</text></svg>
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text">Inspect the list of best gear for twinking on 20 level.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="right-card shadow-sm">
+                    <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" focusable="false" height="225" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect fill="#55595c" height="100%" width="100%"/><text dy=".3em" fill="#eceeef" x="50%" y="50%">Farming Group Finder</text></svg>
+                    <div class="card-body">
+                        <p class="card-text">Take a look here if you are looking for farming group in Legion/BfA 25 level zones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

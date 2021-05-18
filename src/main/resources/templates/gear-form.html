@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{main_layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LWH - New Item</title>
+</head>
+<body>
+
+<div layout:fragment="main-content">
+
+    <div class="container">
+        <form action="#" method="POST" th:action="@{/gear/save}" th:object="${item}">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="itemId">Item ID</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="itemId" placeholder="24395" th:field="*{id}" type="number">
+                </div>
+            </div>
+            <fieldset class="form-group row">
+                <legend class="col-form-label col-sm-2 float-sm-left pt-0">Item level</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input checked class="form-check-input" id="instanceGear" name="gridRadios" th:field="*{ilvl}"
+                               type="radio" value="25">
+                        <label class="form-check-label" for="instanceGear">
+                            25
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id="boeGear" name="gridRadios" th:field="*{ilvl}" type="radio"
+                               value="28">
+                        <label class="form-check-label" for="boeGear">
+                            28
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button class="btn btn-primary" type="submit">Save item</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

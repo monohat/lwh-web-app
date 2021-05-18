@@ -1,0 +1,30 @@
+<!doctype html>
+<html class="h-100" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LWH - Layout</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Custom style for this page -->
+    <link rel="stylesheet" th:href="@{/css/main-layout.css}">
+    <!-- Wowhead tooltips-->
+    <script>const whTooltips = {
+        colorLinks: true,
+        iconizeLinks: true,
+        renameLinks: false,
+        iconSize : 'medium'
+    };</script>
+    <script src="https://wow.zamimg.com/widgets/power.js"></script>
+</head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="main_layout/header :: header"/>
+
+<main layout:fragment="main-content"/>
+
+<footer th:replace="main_layout/footer :: footer"/>
+
+</body>
+</html>

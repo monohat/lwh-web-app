@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{main_layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LWH - Login</title>
+</head>
+<body>
+
+<div layout:fragment="main-content">
+
+  <div class="container">
+
+    <div class="mainbox" id="loginbox"
+         style="margin-top: 50px;">
+
+      <div class="panel panel-info">
+
+        <div class="panel-heading">
+          <div class="panel-title">Sign In</div>
+        </div>
+
+        <div class="panel-body" style="padding-top: 30px">
+
+          <!-- Login Form -->
+          <form class="form-horizontal"
+                method="POST" th:action="@{/authenticateTheUser}">
+
+            <!-- Place for messages: error, alert etc ... -->
+            <div class="form-group">
+              <div class="col-xs-15">
+                <div>
+
+                  <!-- Check for login error -->
+                  <div aclass="alert alert-danger col-xs-offset-1 col-xs-10" th:if="${param.error}">
+                    Invalid username and password.
+                  </div>
+
+                  <!-- Check for logout -->
+                  <div class="alert alert-success col-xs-offset-1 col-xs-10" th:if="${param.logout}">
+                    You have been logged out.
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- User name -->
+            <div class="input-group" style="margin-bottom: 25px">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+              <input class="form-control" name="username" placeholder="username" type="text">
+            </div>
+
+            <!-- Password -->
+            <div class="input-group" style="margin-bottom: 25px">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+              <input class="form-control" name="password" placeholder="password" type="password">
+            </div>
+
+            <!-- Login/Submit Button -->
+            <div class="form-group" style="margin-top: 10px">
+              <div class="col-sm-6 controls">
+                <button class="btn btn-success" type="submit">Login</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+      <div>
+        <a aria-pressed="true" class="btn btn-primary" role="button" th:href="@{/register/showRegistrationForm}">Register
+          New User</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

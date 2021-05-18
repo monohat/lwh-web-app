@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{main_layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LWH - Gear</title>
+</head>
+<body>
+
+<div layout:fragment="main-content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-auto">
+                <div aria-label="Toolbar with button groups" class="btn-toolbar justify-content-between" role="toolbar">
+                    <div aria-label="First group" class="btn-group" role="group">
+                        <a class="btn btn-secondary" th:href="@{gear(filterType=Cloth)}" type="button">Cloth</a>
+                        <a class="btn btn-secondary" th:href="@{gear(filterType=Leather)}" type="button">Leather</a>
+                        <a class="btn btn-secondary" th:href="@{gear(filterType=Mail)}" type="button">Mail</a>
+                        <a class="btn btn-secondary" th:href="@{gear(filterType=Plate)}" type="button">Plate</a>
+                    </div>
+                    <div aria-label="Second group" class="btn-group" role="group"
+                         sec:authorize="hasRole('ROLE_MANAGER')">
+<!--                        <a th:href="@{/gear/new}">Add new item</a>-->
+                        <a class="btn btn-primary btn-sm" style="margin-left: 5%"
+                           th:href="@{/gear/new}" type="button">Add</a>
+                    </div>
+                </div>
+
+                <div class="list-group list-group-flush" th:each="tempItems : ${items}">
+                    <div class="row">
+                        <a  class="list-group-item" data-wh-icon-size="small"
+                            data-wh-rename-link="true"
+                            style="border: 1px solid rgba(0,0,0,0);"
+                            th:data-wowhead="'item='+${tempItems.id}+'&amp;'+'ilvl='+${tempItems.ilvl}"
+                            th:href="@{${currentUrl}(${tempItems.slot}=${tempItems.id})}" th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})"></a>
+                        <span class="badge badge-secondary" style="margin-bottom: 6%; margin-top: 6%"
+                              th:text="${tempItems.slot}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${head.id}+'&amp;'+'ilvl='+${head.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${neck.id}+'&amp;'+'ilvl='+${neck.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${shoulder.id}+'&amp;'+'ilvl='+${shoulder.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${back.id}+'&amp;'+'ilvl='+${back.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${chest.id}+'&amp;'+'ilvl='+${chest.ilvl}"></a>
+                            </div>
+                            <div class="row">
+
+                            </div>
+                            <div class="row">
+
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${wrist.id}+'&amp;'+'ilvl='+${wrist.ilvl}"></a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Armor: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${armor}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Intellect: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${intellect}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Agility: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${agility}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Strength: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${strength}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Stamina: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${stamina}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Critical Strike: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${crit}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Haste: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${haste}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Versatility: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${versatility}"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-lg-7">
+                                    <label>Mastery: </label>
+                                </div>
+                                <div class="col">
+                                    <label th:text="${mastery}"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${hands.id}+'&amp;'+'ilvl='+${hands.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${waist.id}+'&amp;'+'ilvl='+${waist.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${legs.id}+'&amp;'+'ilvl='+${legs.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${feet.id}+'&amp;'+'ilvl='+${feet.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${ringFirst.id}+'&amp;'+'ilvl='+${ringFirst.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${ringSecond.id}+'&amp;'+'ilvl='+${ringSecond.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${trinketFirst.id}+'&amp;'+'ilvl='+${trinketFirst.ilvl}"></a>
+                            </div>
+                            <div class="row">
+                                <a  href="#"
+                                    th:data-wowhead="'item='+${trinketSecond.id}+'&amp;'+'ilvl='+${trinketSecond.ilvl}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
